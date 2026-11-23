@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Chroot Hook 0300: System Services, OS Branding & Calamares Desktop Launcher
+# ==============================================================================
+set -euo pipefail
+
+echo "[0300-system-branding] Enabling SDDM and NetworkManager..."
+systemctl enable sddm.service
+systemctl enable NetworkManager.service
+
+# Update PRETTY_NAME while preserving Debian ID and VERSION_CODENAME for APT/Calamares
+if [[ -f /etc/os-release ]]; then
+  sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Win11Clone-OS 1.0 (Debian 13 Trixie)"/' /etc/os-release
+fi
+
+# Customize Calamares live desktop launcher label while keeping Debian installer hooks intact
+if [[ -f /usr/share/applications/install-debian.desktop ]]; then
+  sed -i 's/^Name=.*/Name=Install Win11Clone OS/' /usr/share/applications/install-debian.desktop
+  mkdir -p /etc/skel/Desktop
+  cp -f /usr/share/applications/install-debian.desktop /etc/skel/Desktop/install-win11clone.desktop
+  chmod +x /etc/skel/Desktop/install-win11clone.desktop
+fi
+
+# Ensure layout initialization script is executable
+chmod +x /usr/local/bin/win11-apply-layout.sh
+
+echo "[0300-system-branding] System branding and Calamares launcher configured."

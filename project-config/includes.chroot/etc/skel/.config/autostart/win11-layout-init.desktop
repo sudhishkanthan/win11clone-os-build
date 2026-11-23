@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Win11Clone First-Login Layout Initializer
+Comment=Applies centered Windows 11 floating taskbar and wallpaper on first login
+Exec=/usr/local/bin/win11-apply-layout.sh
+OnlyShowIn=KDE;
+X-KDE-Autostart-Phase=2
+NoDisplay=true

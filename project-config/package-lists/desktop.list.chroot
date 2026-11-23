@@ -1,0 +1,21 @@
+# Minimal KDE Plasma 6 desktop + X11 session for VirtualBox Guest Additions + SDDM
+xserver-xorg
+plasma-desktop
+plasma-workspace
+kwin-x11
+kwin-wayland
+sddm
+sddm-theme-breeze
+breeze
+breeze-gtk-theme
+kde-config-gtk-style
+kde-config-sddm
+kde-config-screenlocker
+kscreen
+plasma-nm
+plasma-pa
+polkit-kde-agent-1
+kio-extras
+kde-cli-tools
+fonts-noto
+fonts-noto-color-emoji

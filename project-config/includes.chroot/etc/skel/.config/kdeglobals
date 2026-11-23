@@ -1,0 +1,15 @@
+[General]
+ColorScheme=FluentRoundLight
+Name=Fluent-round-light
+font=Noto Sans,10,-1,5,400,0,0,0,0,0
+menuFont=Noto Sans,10,-1,5,400,0,0,0,0,0
+smallestReadableFont=Noto Sans,8,-1,5,400,0,0,0,0,0
+toolBarFont=Noto Sans,10,-1,5,400,0,0,0,0,0
+
+[Icons]
+Theme=Win11
+
+[KDE]
+LookAndFeelPackage=com.github.vinceliuice.Fluent-round-light
+SingleClick=false
+widgetStyle=Breeze

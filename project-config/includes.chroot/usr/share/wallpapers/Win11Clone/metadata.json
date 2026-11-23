@@ -1,0 +1,12 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "Win11Clone-OS Project"
+            }
+        ],
+        "Id": "Win11Clone",
+        "License": "GPL-3.0-or-later",
+        "Name": "Win11Clone Fluent Bloom"
+    }
+}

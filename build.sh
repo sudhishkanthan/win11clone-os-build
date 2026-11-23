@@ -130,7 +130,7 @@ run_build() {
   fi
 
   mv -f "${generated_iso}" "${ISO_OUT}"
-  sha256sum "${ISO_OUT}" > "${ISO_OUT}.sha256"
+  ( cd "${OUT_DIR}" && sha256sum "${OS_NAME}.iso" > "${OS_NAME}.iso.sha256" )
 
   log "Build complete!"
   log "ISO image : ${ISO_OUT}"

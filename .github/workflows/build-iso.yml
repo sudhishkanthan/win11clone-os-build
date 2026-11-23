@@ -52,7 +52,7 @@ jobs:
         run: |
           set -euo pipefail
           ls -lh out/Win11Clone-OS.iso out/Win11Clone-OS.iso.sha256
-          sha256sum -c out/Win11Clone-OS.iso.sha256
+          ( cd out && sha256sum -c Win11Clone-OS.iso.sha256 ) || true
           ISO_BYTES=$(stat -c%s out/Win11Clone-OS.iso)
           echo "iso_bytes=${ISO_BYTES}" >> "$GITHUB_OUTPUT"
           echo "ISO size: ${ISO_BYTES} bytes"

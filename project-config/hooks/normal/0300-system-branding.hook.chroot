@@ -24,4 +24,10 @@ fi
 # Ensure layout initialization script is executable
 chmod +x /usr/local/bin/win11-apply-layout.sh
 
+# Configure passwordless sudo for live session
+if [[ -d /etc/sudoers.d ]]; then
+  echo "live ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/live-nopasswd
+  chmod 0440 /etc/sudoers.d/live-nopasswd
+fi
+
 echo "[0300-system-branding] System branding and Calamares launcher configured."

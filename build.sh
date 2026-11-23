@@ -54,6 +54,8 @@ install_host_dependencies() {
     live-build \
     debootstrap \
     debian-archive-keyring \
+    apt-utils \
+    rsync \
     squashfs-tools \
     xorriso \
     isolinux \
@@ -63,7 +65,11 @@ install_host_dependencies() {
     mtools \
     dosfstools \
     ca-certificates \
-    curl
+    curl \
+    git \
+    file \
+    bc \
+    kmod
 
   # Ensure debootstrap has the trixie script when running on Ubuntu hosts/CI runners
   if [[ ! -e "/usr/share/debootstrap/scripts/${DISTRO_CODENAME}" ]] && [[ -e /usr/share/debootstrap/scripts/sid ]]; then

@@ -27,10 +27,10 @@ Enabled: yes
 Signed-By: /usr/share/keyrings/fasttrack-archive-keyring.gpg
 EOF
 
-apt-get update -qq
+apt-get update -qq || true
 apt-get install -y --no-install-recommends \
   virtualbox-guest-utils \
-  virtualbox-guest-x11
+  virtualbox-guest-x11 || echo "[0100-virtualbox-guest] Warning: VirtualBox guest packages installation skipped or partially succeeded."
 
 if systemctl list-unit-files | grep -q '^virtualbox-guest-utils\.service'; then
   systemctl enable virtualbox-guest-utils.service

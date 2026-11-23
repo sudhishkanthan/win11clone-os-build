@@ -38,8 +38,14 @@ jobs:
       - name: Run deterministic Win11Clone-OS ISO build
         run: |
           set -euo pipefail
-          chmod +x build.sh
-          sudo ./build.sh
+          mkdir -p out
+          docker run --privileged --rm \
+            -v /dev:/dev \
+            -v "${GITHUB_WORKSPACE}:/build" \
+            -w /build \
+            debian:trixie \
+            bash -c "chmod +x build.sh && ./build.sh"
+          sudo chown -R runner:runner "${GITHUB_WORKSPACE}"
 
       - name: Verify ISO and checksum
         id: verify

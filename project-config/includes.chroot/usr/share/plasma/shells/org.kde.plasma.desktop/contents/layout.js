@@ -33,11 +33,11 @@ dock.alignment = "center";
 dock.height = 64;
 dock.floating = true;
 
-// Search trigger / Application Launcher
-var search = dock.addWidget("org.kde.plasma.kickoff");
-search.currentConfigGroup = ["General"];
-search.writeConfig("icon", "edit-find");
-search.writeConfig("favoritesPortedToKAstats", "true");
+// 1st icon on dock: Nexus N Logo (Start Menu / App Launcher)
+var kickoff = dock.addWidget("org.kde.plasma.kickoff");
+kickoff.currentConfigGroup = ["General"];
+kickoff.writeConfig("icon", "distributor-logo");
+kickoff.writeConfig("favoritesPortedToKAstats", "true");
 
 // Pinned App Launchers
 var tasks = dock.addWidget("org.kde.plasma.icontasks");
@@ -51,7 +51,6 @@ tasks.writeConfig("launchers", [
     "applications:org.kde.kcalc.desktop",
     "applications:org.kde.plasma.discover.desktop",
     "applications:org.kde.gwenview.desktop",
-    "applications:org.kde.ark.desktop",
     "applications:systemsettings.desktop"
 ].join(","));
 tasks.writeConfig("indicateAudioStreams", "true");

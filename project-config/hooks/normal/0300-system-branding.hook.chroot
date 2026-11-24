@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Chroot Hook 0300: System Services, OS Branding & Calamares Desktop Launcher
+# Chroot Hook 0300: System Services, OS Branding, Wallpapers & Desktop Config
 # ==============================================================================
 set -euo pipefail
 
@@ -27,7 +27,34 @@ if [[ -f /usr/local/bin/nexus-apply-layout.sh ]]; then
   chmod +x /usr/local/bin/nexus-apply-layout.sh
 fi
 
-# Pre-create user nexus (and live) with known credentials so login/autologin never blocks
+# Override Debian default wallpapers system-wide with NexusOS dark mountain lake wallpaper
+readonly NEXUS_WALLPAPER="/usr/share/wallpapers/NexusOS/contents/images/1920x1080.jpg"
+if [[ -f "${NEXUS_WALLPAPER}" ]]; then
+  echo "[0300-system-branding] Setting NexusOS wallpaper system-wide..."
+  mkdir -p /usr/share/desktop-base/active-theme/wallpaper/contents/images
+  for f in /usr/share/desktop-base/active-theme/wallpaper/contents/images/*; do
+    if [[ -f "$f" ]]; then
+      cp -f "${NEXUS_WALLPAPER}" "$f" || true
+    fi
+  done
+  cp -f "${NEXUS_WALLPAPER}" /usr/share/desktop-base/active-theme/wallpaper/contents/images/1920x1080.svg || true
+
+  # Set Debian alternatives
+  if command -v update-alternatives >/dev/null 2>&1; then
+    update-alternatives --install /usr/share/images/desktop-base/desktop-background desktop-background "${NEXUS_WALLPAPER}" 100 || true
+    update-alternatives --set desktop-background "${NEXUS_WALLPAPER}" || true
+  fi
+
+  # Set Breeze and Plasma defaults wallpaper
+  for def_file in /usr/share/plasma/look-and-feel/*/contents/defaults; do
+    if [[ -f "${def_file}" ]]; then
+      sed -i 's|^defaultWallpaperTheme=.*|defaultWallpaperTheme=NexusOS|' "${def_file}" || true
+      sed -i 's|^defaultImage=.*|defaultImage=file:///usr/share/wallpapers/NexusOS/contents/images/1920x1080.jpg|' "${def_file}" || true
+    fi
+  done
+fi
+
+# Pre-create users nexus and live with full skel pre-populated
 for u in nexus live; do
   if ! id -u "${u}" >/dev/null 2>&1; then
     useradd -m -s /bin/bash -U -G sudo,audio,video,plugdev,netdev,input -c "The Nexus OS" "${u}" || true
@@ -36,6 +63,10 @@ for u in nexus live; do
   
   if [[ -d /etc/skel ]] && [[ -d "/home/${u}" ]]; then
     cp -a /etc/skel/. "/home/${u}/"
+    # Replace $HOME in user-places.xbel if present
+    if [[ -f "/home/${u}/.local/share/user-places.xbel" ]]; then
+      sed -i "s|\$HOME|/home/${u}|g" "/home/${u}/.local/share/user-places.xbel" || true
+    fi
     chown -R "${u}:${u}" "/home/${u}" || true
   fi
 
@@ -52,4 +83,4 @@ if [[ -f /etc/pam.d/common-auth ]]; then
   sed -i 's/pam_unix.so.*/pam_unix.so nullok/' /etc/pam.d/common-auth
 fi
 
-echo "[0300-system-branding] The Nexus OS branding, accounts, and Calamares launcher configured."
+echo "[0300-system-branding] System branding, wallpaper overrides, and user accounts configured."

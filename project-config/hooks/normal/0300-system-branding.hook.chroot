@@ -24,6 +24,24 @@ fi
 # Ensure layout initialization script is executable
 chmod +x /usr/local/bin/win11-apply-layout.sh
 
+# Pre-create live user with known credentials so login/autologin never blocks
+if ! id -u live >/dev/null 2>&1; then
+  useradd -m -s /bin/bash -U -G sudo,audio,video,plugdev,netdev,input -c "Win11Clone" live || true
+fi
+echo "live:live" | chpasswd || true
+echo "root:root" | chpasswd || true
+
+# Allow blank password in PAM
+if [[ -f /etc/pam.d/common-auth ]]; then
+  sed -i 's/pam_unix.so.*/pam_unix.so nullok/' /etc/pam.d/common-auth
+fi
+
+# Populate /home/live with skel config
+if [[ -d /etc/skel ]] && [[ -d /home/live ]]; then
+  cp -a /etc/skel/. /home/live/
+  chown -R live:live /home/live || true
+fi
+
 # Configure passwordless sudo for live session
 if [[ -d /etc/sudoers.d ]]; then
   echo "live ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/live-nopasswd

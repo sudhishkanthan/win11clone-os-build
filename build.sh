@@ -109,7 +109,7 @@ configure_live_build() {
     --iso-application "${OS_NAME}" \
     --iso-publisher "Win11Clone-OS Project" \
     --iso-volume "WIN11CLONE_OS" \
-    --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8 keyboard-layouts=us username=live user-fullname=Win11Clone live-config.user-passwords=live:live"
+    --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8 keyboard-layouts=us username=live user-fullname=Win11Clone live-config.user-passwords=live:live live-config.autologin"
 
   log "Syncing project-config (package lists, chroot hooks, /etc/skel, overlays)..."
   cp -a "${PROJECT_CONFIG_DIR}/." "${BUILD_DIR}/config/"

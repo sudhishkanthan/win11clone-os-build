@@ -1,7 +1,11 @@
-# Core user applications (no bloat)
+# Core user applications (The Nexus OS)
 dolphin
 firefox-esr
+falkon
 kate
 konsole
 kcalc
 systemsettings
+gwenview
+ark
+plasma-discover

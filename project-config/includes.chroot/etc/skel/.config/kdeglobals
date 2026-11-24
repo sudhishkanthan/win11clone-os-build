@@ -1,13 +1,15 @@
 [General]
 ColorScheme=BreezeDark
 Name=BreezeDark
-font=Noto Sans,10,-1,5,400,0,0,0,0,0
-menuFont=Noto Sans,10,-1,5,400,0,0,0,0,0
-smallestReadableFont=Noto Sans,8,-1,5,400,0,0,0,0,0
-toolBarFont=Noto Sans,10,-1,5,400,0,0,0,0,0
+font=SF Pro Display,10,-1,5,50,0,0,0,0,0
+fixed=SF Pro Display,10,-1,5,50,0,0,0,0,0
+menuFont=SF Pro Display,10,-1,5,50,0,0,0,0,0
+smallestReadableFont=SF Pro Display,8,-1,5,50,0,0,0,0,0
+toolBarFont=SF Pro Display,10,-1,5,50,0,0,0,0,0
+generalFont=SF Pro Display,10,-1,5,50,0,0,0,0,0
 
 [Icons]
-Theme=Tela-circle-dark
+Theme=Nexus-OS-Icons
 
 [KDE]
 LookAndFeelPackage=org.kde.breezedark.desktop

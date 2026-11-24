@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Chroot Hook 0200: Install The Nexus OS Dark Theme & Tela Circle Icons
+# Chroot Hook 0200: Install The Nexus OS Dark Theme, SF Pro Fonts & Custom Icons
 # Sources:
 #   - https://github.com/vinceliuice/Tela-circle-icon-theme
 #   - https://github.com/vinceliuice/Fluent-kde
@@ -31,14 +31,19 @@ if [[ -f "${THEME_TMP}/Fluent-kde/install.sh" ]]; then
   )
 fi
 
-# Refresh icon caches if gtk-update-icon-cache is present
+# Refresh icon caches including Nexus-OS-Icons
 if command -v gtk-update-icon-cache >/dev/null 2>&1; then
-  for icon_dir in /usr/share/icons/Tela-circle*; do
+  for icon_dir in /usr/share/icons/Nexus-OS-Icons /usr/share/icons/Tela-circle*; do
     if [[ -d "${icon_dir}" ]]; then
       gtk-update-icon-cache -f -t "${icon_dir}" || true
     fi
   done
 fi
 
+# Refresh system font cache for SF Pro Display
+if command -v fc-cache >/dev/null 2>&1; then
+  fc-cache -fv /usr/share/fonts || true
+fi
+
 rm -rf "${THEME_TMP}"
-echo "[0200-nexus-theme] The Nexus OS dark theme and Tela-circle icons installed."
+echo "[0200-nexus-theme] The Nexus OS custom icons, fonts, and dark theme installed."

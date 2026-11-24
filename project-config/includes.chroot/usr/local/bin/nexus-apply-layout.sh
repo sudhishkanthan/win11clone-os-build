@@ -2,26 +2,24 @@
 # ==============================================================================
 # The Nexus OS First-Login KDE Plasma 6 Layout Script
 # Configures:
-#   1. Sleek top bar (Application Launcher, Center Date & Time, System Tray)
-#   2. Centered floating bottom dock (Dolphin, Firefox, Konsole, Kate, Settings, Workspace Pager)
-#   3. The Nexus OS Alpine Lake Reflection wallpaper
+#   1. Top floating island clock pill (20:13 • Tue, Nov 24)
+#   2. Centered floating bottom dock (Search, Files, Browser, Terminal, Code, Calc, Discover, Photos, Settings, Trash)
+#   3. Right floating status island (Wi-Fi, Volume, Battery, Power)
+#   4. Dark moody mountain lake wallpaper
 # ==============================================================================
 set -euo pipefail
 
 readonly STAMP_FILE="${HOME}/.config/nexus-layout-applied"
 readonly WALLPAPER_PATH="/usr/share/wallpapers/NexusOS/contents/images/1920x1080.jpg"
 
-# Ensure VirtualBox Guest Additions X11 client daemons are active
 if command -v VBoxClient-all >/dev/null 2>&1; then
   VBoxClient-all >/dev/null 2>&1 || true
 fi
 
-# Run layout initialization only once per user so manual tweaks are preserved
 if [[ -f "${STAMP_FILE}" ]]; then
   exit 0
 fi
 
-# Wait up to 30 seconds for PlasmaShell D-Bus interface to become available
 for _ in $(seq 1 30); do
   if gdbus introspect --session --dest org.kde.PlasmaShell --object-path /PlasmaShell >/dev/null 2>&1; then
     break
@@ -36,60 +34,62 @@ for (var i = 0; i < existingPanels.length; i++) {
     existingPanels[i].remove();
 }
 
-// 1. TOP PANEL: Frosted glass status bar
-var topPanel = new Panel();
-topPanel.location = "top";
-topPanel.height = 32;
-topPanel.floating = false;
+// 1. TOP CENTER PILL: Minimal floating time & date island
+var topPill = new Panel();
+topPill.location = "top";
+topPill.alignment = "center";
+topPill.height = 30;
+topPill.floating = true;
 
-// Top-left: Application launcher
-var kickoff = topPanel.addWidget("org.kde.plasma.kickoff");
-kickoff.currentConfigGroup = ["General"];
-kickoff.writeConfig("icon", "start-here-kde");
-kickoff.writeConfig("favoritesPortedToKAstats", "true");
+var clock = topPill.addWidget("org.kde.plasma.digitalclock");
+clock.currentConfigGroup = ["Appearance"];
+clock.writeConfig("showDate", "true");
+clock.writeConfig("dateFormat", "custom");
+clock.writeConfig("customDateFormat", "HH:mm • ddd, MMM d");
 
-// Center spacing
-topPanel.addWidget("org.kde.plasma.panelspacer");
-
-// Top-center: Date & Clock
-var topClock = topPanel.addWidget("org.kde.plasma.digitalclock");
-topClock.currentConfigGroup = ["Appearance"];
-topClock.writeConfig("showDate", "true");
-topClock.writeConfig("dateFormat", "shortDate");
-
-// Right spacing
-topPanel.addWidget("org.kde.plasma.panelspacer");
-
-// Top-right: System Tray
-topPanel.addWidget("org.kde.plasma.systemtray");
-
-// 2. BOTTOM PANEL: Centered Floating Dock
+// 2. BOTTOM FLOATING DOCK: Centered application bar
 var dock = new Panel();
 dock.location = "bottom";
-dock.height = 56;
-dock.floating = true;
 dock.alignment = "center";
+dock.height = 64;
+dock.floating = true;
 
-// Dock pinned apps (Icon-Only Task Manager)
+// Search trigger / Application Launcher
+var search = dock.addWidget("org.kde.plasma.kickoff");
+search.currentConfigGroup = ["General"];
+search.writeConfig("icon", "edit-find");
+search.writeConfig("favoritesPortedToKAstats", "true");
+
+// Pinned App Launchers
 var tasks = dock.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];
 tasks.writeConfig("launchers", [
-    "preferred://filemanager",
-    "preferred://browser",
-    "applications:org.kde.kate.desktop",
+    "applications:org.kde.dolphin.desktop",
+    "applications:org.kde.falkon.desktop",
+    "applications:firefox-esr.desktop",
     "applications:org.kde.konsole.desktop",
+    "applications:org.kde.kate.desktop",
     "applications:org.kde.kcalc.desktop",
+    "applications:org.kde.plasma.discover.desktop",
+    "applications:org.kde.gwenview.desktop",
+    "applications:org.kde.ark.desktop",
     "applications:systemsettings.desktop"
 ].join(","));
 tasks.writeConfig("indicateAudioStreams", "true");
 
-// Virtual Desktops Pager inside dock
-dock.addWidget("org.kde.plasma.pager");
+// Trash Widget inside dock
+dock.addWidget("org.kde.plasma.trash");
 
-// Show desktop button at edge of dock
-dock.addWidget("org.kde.plasma.showdesktop");
+// 3. BOTTOM RIGHT STATUS ISLAND: Wi-Fi, Volume, Battery, Power
+var statusPill = new Panel();
+statusPill.location = "bottom";
+statusPill.alignment = "right";
+statusPill.height = 64;
+statusPill.floating = true;
 
-// 3. Set Alpine Lake Reflection wallpaper on all desktops
+statusPill.addWidget("org.kde.plasma.systemtray");
+
+// 4. Apply Dark Mountain Lake wallpaper
 var allDesktops = desktops();
 for (var j = 0; j < allDesktops.length; j++) {
     var d = allDesktops[j];

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/local/bin/nexus-apply-layout.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name=The Nexus OS Layout Initializer
+Comment=Applies The Nexus OS dark top bar and floating dock on first login

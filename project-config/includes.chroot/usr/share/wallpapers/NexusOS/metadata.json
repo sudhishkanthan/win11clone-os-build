@@ -2,11 +2,11 @@
     "KPlugin": {
         "Authors": [
             {
-                "Name": "Win11Clone-OS Project"
+                "Name": "The Nexus OS Project"
             }
         ],
-        "Id": "Win11Clone",
+        "Id": "NexusOS",
         "License": "GPL-3.0-or-later",
-        "Name": "Win11Clone Fluent Bloom"
+        "Name": "The Nexus OS Alpine Reflection"
     }
 }

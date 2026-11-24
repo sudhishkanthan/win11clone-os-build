@@ -3,7 +3,7 @@ BorderSize=None
 ButtonsOnLeft=
 ButtonsOnRight=IAX
 library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Fluent-round-light
+theme=__aurorae__svg__Fluent-round-dark
 
 [Plugins]
 blurEnabled=true

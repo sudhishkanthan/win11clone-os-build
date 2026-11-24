@@ -10,42 +10,46 @@ systemctl enable NetworkManager.service
 
 # Update PRETTY_NAME while preserving Debian ID and VERSION_CODENAME for APT/Calamares
 if [[ -f /etc/os-release ]]; then
-  sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="Win11Clone-OS 1.0 (Debian 13 Trixie)"/' /etc/os-release
+  sed -i 's/^PRETTY_NAME=.*/PRETTY_NAME="The Nexus OS 1.0 (Debian 13 Trixie)"/' /etc/os-release
+  sed -i 's/^NAME=.*/NAME="The Nexus OS"/' /etc/os-release
 fi
 
-# Customize Calamares live desktop launcher label while keeping Debian installer hooks intact
+# Customize Calamares live desktop launcher label
 if [[ -f /usr/share/applications/install-debian.desktop ]]; then
-  sed -i 's/^Name=.*/Name=Install Win11Clone OS/' /usr/share/applications/install-debian.desktop
+  sed -i 's/^Name=.*/Name=Install The Nexus OS/' /usr/share/applications/install-debian.desktop
   mkdir -p /etc/skel/Desktop
-  cp -f /usr/share/applications/install-debian.desktop /etc/skel/Desktop/install-win11clone.desktop
-  chmod +x /etc/skel/Desktop/install-win11clone.desktop
+  cp -f /usr/share/applications/install-debian.desktop /etc/skel/Desktop/install-nexus-os.desktop
+  chmod +x /etc/skel/Desktop/install-nexus-os.desktop
 fi
 
 # Ensure layout initialization script is executable
-chmod +x /usr/local/bin/win11-apply-layout.sh
-
-# Pre-create live user with known credentials so login/autologin never blocks
-if ! id -u live >/dev/null 2>&1; then
-  useradd -m -s /bin/bash -U -G sudo,audio,video,plugdev,netdev,input -c "Win11Clone" live || true
+if [[ -f /usr/local/bin/nexus-apply-layout.sh ]]; then
+  chmod +x /usr/local/bin/nexus-apply-layout.sh
 fi
-echo "live:live" | chpasswd || true
-echo "root:root" | chpasswd || true
+
+# Pre-create user nexus (and live) with known credentials so login/autologin never blocks
+for u in nexus live; do
+  if ! id -u "${u}" >/dev/null 2>&1; then
+    useradd -m -s /bin/bash -U -G sudo,audio,video,plugdev,netdev,input -c "The Nexus OS" "${u}" || true
+  fi
+  echo "${u}:${u}" | chpasswd || true
+  
+  if [[ -d /etc/skel ]] && [[ -d "/home/${u}" ]]; then
+    cp -a /etc/skel/. "/home/${u}/"
+    chown -R "${u}:${u}" "/home/${u}" || true
+  fi
+
+  if [[ -d /etc/sudoers.d ]]; then
+    echo "${u} ALL=(ALL) NOPASSWD: ALL" > "/etc/sudoers.d/${u}-nopasswd"
+    chmod 0440 "/etc/sudoers.d/${u}-nopasswd"
+  fi
+done
+
+echo "root:nexus" | chpasswd || true
 
 # Allow blank password in PAM
 if [[ -f /etc/pam.d/common-auth ]]; then
   sed -i 's/pam_unix.so.*/pam_unix.so nullok/' /etc/pam.d/common-auth
 fi
 
-# Populate /home/live with skel config
-if [[ -d /etc/skel ]] && [[ -d /home/live ]]; then
-  cp -a /etc/skel/. /home/live/
-  chown -R live:live /home/live || true
-fi
-
-# Configure passwordless sudo for live session
-if [[ -d /etc/sudoers.d ]]; then
-  echo "live ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/live-nopasswd
-  chmod 0440 /etc/sudoers.d/live-nopasswd
-fi
-
-echo "[0300-system-branding] System branding and Calamares launcher configured."
+echo "[0300-system-branding] The Nexus OS branding, accounts, and Calamares launcher configured."

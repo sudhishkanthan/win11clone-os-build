@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# Win11Clone-OS ISO Build Script (Debian 13 "Trixie" / KDE Plasma 6 / Calamares)
+# The Nexus OS ISO Build Script (Debian 13 "Trixie" / KDE Plasma 6 / Calamares)
 # Target: x86_64 (amd64) hybrid ISO with Legacy BIOS + UEFI boot support
 # ==============================================================================
 set -euo pipefail
 IFS=$'\n\t'
 
-readonly OS_NAME="Win11Clone-OS"
+readonly OS_NAME="TheNexusOS"
 readonly DISTRO_CODENAME="trixie"
 readonly ARCH="amd64"
 readonly MIRROR_URL="${MIRROR_URL:-http://deb.debian.org/debian/}"
@@ -87,7 +87,7 @@ configure_live_build() {
     rm -rf "${BUILD_DIR}/config"
   fi
 
-  log "Running lb config for Debian ${DISTRO_CODENAME} (${ARCH}, BIOS + UEFI)..."
+  log "Running lb config for The Nexus OS (Debian ${DISTRO_CODENAME} ${ARCH}, BIOS + UEFI)..."
   lb config \
     --mode debian \
     --system live \
@@ -106,16 +106,16 @@ configure_live_build() {
     --apt-indices true \
     --cache true \
     --chroot-filesystem squashfs \
-    --iso-application "${OS_NAME}" \
-    --iso-publisher "Win11Clone-OS Project" \
-    --iso-volume "WIN11CLONE_OS" \
-    --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8 keyboard-layouts=us username=live user-fullname=Win11Clone live-config.user-passwords=live:live live-config.autologin"
+    --iso-application "The Nexus OS" \
+    --iso-publisher "The Nexus OS Project" \
+    --iso-volume "NEXUS_OS" \
+    --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8 keyboard-layouts=us username=nexus user-fullname=\"Nexus\" live-config.user-passwords=nexus:nexus live-config.autologin"
 
   log "Syncing project-config (package lists, chroot hooks, /etc/skel, overlays)..."
   cp -a "${PROJECT_CONFIG_DIR}/." "${BUILD_DIR}/config/"
 
   chmod +x "${BUILD_DIR}"/config/hooks/normal/*.hook.chroot
-  chmod +x "${BUILD_DIR}"/config/includes.chroot/usr/local/bin/win11-apply-layout.sh
+  chmod +x "${BUILD_DIR}"/config/includes.chroot/usr/local/bin/nexus-apply-layout.sh
 }
 
 run_build() {

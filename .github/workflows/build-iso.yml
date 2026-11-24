@@ -1,4 +1,4 @@
-name: Build Win11Clone-OS ISO
+name: Build The Nexus OS ISO
 
 on:
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   build-iso:
-    name: Compile Win11Clone-OS.iso (Debian 13 amd64)
+    name: Compile TheNexusOS.iso (Debian 13 amd64)
     runs-on: ubuntu-24.04
     timeout-minutes: 90
 
@@ -35,7 +35,7 @@ jobs:
           echo "Disk space after cleanup:"
           df -h /
 
-      - name: Run deterministic Win11Clone-OS ISO build
+      - name: Run deterministic The Nexus OS ISO build
         run: |
           set -euo pipefail
           mkdir -p out
@@ -51,19 +51,19 @@ jobs:
         id: verify
         run: |
           set -euo pipefail
-          ls -lh out/Win11Clone-OS.iso out/Win11Clone-OS.iso.sha256
-          ( cd out && sha256sum -c Win11Clone-OS.iso.sha256 ) || true
-          ISO_BYTES=$(stat -c%s out/Win11Clone-OS.iso)
+          ls -lh out/TheNexusOS.iso out/TheNexusOS.iso.sha256
+          ( cd out && sha256sum -c TheNexusOS.iso.sha256 ) || true
+          ISO_BYTES=$(stat -c%s out/TheNexusOS.iso)
           echo "iso_bytes=${ISO_BYTES}" >> "$GITHUB_OUTPUT"
           echo "ISO size: ${ISO_BYTES} bytes"
 
-      - name: Upload Win11Clone-OS.iso as Workflow Artifact
+      - name: Upload TheNexusOS.iso as Workflow Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Win11Clone-OS-iso
+          name: TheNexusOS-iso
           path: |
-            out/Win11Clone-OS.iso
-            out/Win11Clone-OS.iso.sha256
+            out/TheNexusOS.iso
+            out/TheNexusOS.iso.sha256
           compression-level: 0
           retention-days: 14
 
@@ -71,7 +71,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: Win11Clone-OS-build-log
+          name: TheNexusOS-build-log
           path: out/build.log
           if-no-files-found: ignore
           retention-days: 7
@@ -83,9 +83,9 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -euo pipefail
-          TAG="v1.0-${GITHUB_RUN_NUMBER}"
+          TAG="TheNexusOS-v1.0-${GITHUB_RUN_NUMBER}"
           gh release create "${TAG}" \
-            out/Win11Clone-OS.iso \
-            out/Win11Clone-OS.iso.sha256 \
-            --title "Win11Clone-OS (${TAG})" \
+            out/TheNexusOS.iso \
+            out/TheNexusOS.iso.sha256 \
+            --title "The Nexus OS (${TAG})" \
             --notes "Automated Debian 13 (Trixie) KDE Plasma 6 hybrid BIOS+UEFI ISO build for VirtualBox."

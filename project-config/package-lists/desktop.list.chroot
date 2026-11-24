@@ -12,6 +12,7 @@ kde-config-gtk-style
 kde-config-sddm
 kde-config-screenlocker
 kscreen
+kdeplasma-addons
 plasma-nm
 plasma-pa
 polkit-kde-agent-1

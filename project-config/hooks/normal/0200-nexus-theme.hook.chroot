@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Chroot Hook 0200: Install The Nexus OS Dark Theme & Tela Circle Icons
+# Sources:
+#   - https://github.com/vinceliuice/Tela-circle-icon-theme
+#   - https://github.com/vinceliuice/Fluent-kde
+# ==============================================================================
+set -euo pipefail
+
+readonly THEME_TMP="/tmp/nexus-theme-build"
+rm -rf "${THEME_TMP}"
+mkdir -p "${THEME_TMP}"
+
+echo "[0200-nexus-theme] Cloning and installing Tela-circle-icon-theme..."
+git clone --depth 1 https://github.com/vinceliuice/Tela-circle-icon-theme.git "${THEME_TMP}/Tela-circle-icon-theme" || echo "[0200-nexus-theme] Warning: Tela-circle git clone failed"
+if [[ -f "${THEME_TMP}/Tela-circle-icon-theme/install.sh" ]]; then
+  (
+    cd "${THEME_TMP}/Tela-circle-icon-theme"
+    chmod +x ./install.sh
+    ./install.sh -a || true
+  )
+fi
+
+echo "[0200-nexus-theme] Cloning and installing Fluent-kde (dark & round variants)..."
+git clone --depth 1 https://github.com/vinceliuice/Fluent-kde.git "${THEME_TMP}/Fluent-kde" || echo "[0200-nexus-theme] Warning: Fluent-kde git clone failed"
+if [[ -f "${THEME_TMP}/Fluent-kde/install.sh" ]]; then
+  (
+    cd "${THEME_TMP}/Fluent-kde"
+    chmod +x ./install.sh
+    ./install.sh --round || true
+  )
+fi
+
+# Refresh icon caches if gtk-update-icon-cache is present
+if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+  for icon_dir in /usr/share/icons/Tela-circle*; do
+    if [[ -d "${icon_dir}" ]]; then
+      gtk-update-icon-cache -f -t "${icon_dir}" || true
+    fi
+  done
+fi
+
+rm -rf "${THEME_TMP}"
+echo "[0200-nexus-theme] The Nexus OS dark theme and Tela-circle icons installed."

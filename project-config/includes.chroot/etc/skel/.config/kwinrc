@@ -11,8 +11,8 @@ contrastEnabled=true
 slideEnabled=true
 
 [Effect-blur]
-BlurStrength=10
-NoiseStrength=2
+BlurStrength=12
+NoiseStrength=1
 
 [Windows]
 Placement=Centered

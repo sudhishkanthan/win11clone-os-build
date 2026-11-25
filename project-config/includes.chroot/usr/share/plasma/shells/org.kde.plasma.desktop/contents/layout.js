@@ -1,4 +1,4 @@
-// The Nexus OS Default Desktop Layout for KDE Plasma 6
+// The Nexus OS Default Desktop Layout for KDE Plasma 6 (Light Streaks)
 var existingPanels = panels();
 for (var i = 0; i < existingPanels.length; i++) {
     existingPanels[i].remove();
@@ -13,7 +13,7 @@ for (var j = 0; j < allDesktops.length; j++) {
     d.writeConfig("Image", "file:///usr/share/wallpapers/NexusOS/contents/images/1920x1080.jpg");
 }
 
-// 1. TOP CENTER PILL: Minimal floating time & date island
+// 1. TOP CENTER PILL: Minimal frosted glass time & date notch
 var topPill = new Panel();
 topPill.location = "top";
 topPill.alignment = "center";
@@ -29,7 +29,7 @@ clock.writeConfig("customDateFormat", "ddd, MMM d");
 clock.writeConfig("use24hFormat", "2");
 clock.reloadConfig();
 
-// 2. BOTTOM FLOATING DOCK: Centered application bar
+// 2. BOTTOM FLOATING DOCK: Centered application pill
 var dock = new Panel();
 dock.location = "bottom";
 dock.alignment = "center";
@@ -37,14 +37,14 @@ dock.lengthMode = "fit";
 dock.height = 60;
 dock.floating = true;
 
-// 1st icon on dock: Nexus N Logo (Start Menu / App Launcher)
+// 1st icon on dock: Standalone Nexus N Logo (Start Menu)
 var kickoff = dock.addWidget("org.kde.plasma.kickoff");
 kickoff.currentConfigGroup = ["General"];
 kickoff.writeConfig("icon", "distributor-logo");
 kickoff.writeConfig("favoritesPortedToKAstats", "true");
 kickoff.reloadConfig();
 
-// Pinned App Launchers (passed as Array so Plasma 6 QStringList parses each entry)
+// Pinned App Launchers
 var tasks = dock.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];
 tasks.writeConfig("launchers", [
@@ -56,6 +56,7 @@ tasks.writeConfig("launchers", [
     "applications:org.kde.kcalc.desktop",
     "applications:org.kde.discover.desktop",
     "applications:org.kde.gwenview.desktop",
+    "applications:vlc.desktop",
     "applications:systemsettings.desktop"
 ]);
 tasks.writeConfig("indicateAudioStreams", "true");

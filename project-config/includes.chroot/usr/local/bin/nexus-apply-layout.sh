@@ -15,7 +15,6 @@ if [[ -f "${STAMP_FILE}" ]]; then
   exit 0
 fi
 
-# Wait briefly for Plasma session D-Bus
 for _ in $(seq 1 20); do
   if gdbus introspect --session --dest org.kde.PlasmaShell --object-path /PlasmaShell >/dev/null 2>&1; then
     break
@@ -23,12 +22,11 @@ for _ in $(seq 1 20); do
   sleep 1
 done
 
-# Apply Plasma 6 theme, colorscheme, and wallpaper via official Plasma 6 CLI tools
 if command -v plasma-apply-desktoptheme >/dev/null 2>&1; then
   plasma-apply-desktoptheme Fluent-round-dark >/dev/null 2>&1 || true
 fi
 if command -v plasma-apply-colorscheme >/dev/null 2>&1; then
-  plasma-apply-colorscheme FluentDark >/dev/null 2>&1 || true
+  plasma-apply-colorscheme NexusLightStreaks >/dev/null 2>&1 || true
 fi
 if command -v plasma-apply-wallpaperimage >/dev/null 2>&1 && [[ -f "${WALLPAPER_PATH}" ]]; then
   plasma-apply-wallpaperimage "${WALLPAPER_PATH}" >/dev/null 2>&1 || true

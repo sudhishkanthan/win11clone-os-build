@@ -23,6 +23,7 @@ tasks.writeConfig("launchers", [
     "applications:org.kde.kcalc.desktop",
     "applications:org.kde.discover.desktop",
     "applications:org.kde.gwenview.desktop",
+    "applications:vlc.desktop",
     "applications:systemsettings.desktop"
 ]);
 tasks.writeConfig("indicateAudioStreams", "true");

@@ -18,6 +18,7 @@ var topPill = new Panel();
 topPill.location = "top";
 topPill.alignment = "center";
 topPill.lengthMode = "fit";
+topPill.opacity = "translucent";
 topPill.height = 32;
 topPill.floating = true;
 
@@ -28,15 +29,12 @@ var dock = new Panel();
 dock.location = "bottom";
 dock.alignment = "center";
 dock.lengthMode = "fit";
+dock.opacity = "translucent";
 dock.height = 60;
 dock.floating = true;
 
-// 1st icon on dock: Standalone Nexus N Logo (Start Menu)
-var kickoff = dock.addWidget("org.kde.plasma.kickoff");
-kickoff.currentConfigGroup = ["General"];
-kickoff.writeConfig("icon", "distributor-logo");
-kickoff.writeConfig("favoritesPortedToKAstats", "true");
-kickoff.reloadConfig();
+// 1st icon on dock: Standalone Nexus N Logo -> Custom 5x2 Start Menu
+dock.addWidget("org.nexus.startmenu");
 
 // Pinned App Launchers
 var tasks = dock.addWidget("org.kde.plasma.icontasks");
@@ -60,30 +58,13 @@ tasks.reloadConfig();
 dock.addWidget("org.kde.plasma.marginsseparator");
 dock.addWidget("org.kde.plasma.trash");
 
-// 3. BOTTOM RIGHT STATUS ISLAND: Wi-Fi, Volume, Battery, Power
+// 3. BOTTOM RIGHT STATUS ISLAND: Custom Wi-Fi, Volume, Battery, Power Control Center
 var statusPill = new Panel();
 statusPill.location = "bottom";
 statusPill.alignment = "right";
 statusPill.lengthMode = "fit";
+statusPill.opacity = "translucent";
 statusPill.height = 60;
 statusPill.floating = true;
 
-var tray = statusPill.addWidget("org.kde.plasma.systemtray");
-tray.currentConfigGroup = ["General"];
-tray.writeConfig("hiddenItems", [
-    "org.kde.plasma.clipboard",
-    "org.kde.plasma.devicenotifier",
-    "org.kde.plasma.keyboardlayout",
-    "org.kde.kscreen",
-    "org.kde.plasma.notifications",
-    "org.kde.plasma.mediacontroller",
-    "org.kde.plasma.brightness",
-    "org.kde.plasma.keyboardindicator"
-]);
-tray.reloadConfig();
-
-var power = statusPill.addWidget("org.kde.plasma.lock_logout");
-power.currentConfigGroup = ["General"];
-power.writeConfig("show_lockScreen", "false");
-power.writeConfig("show_requestShutDown", "true");
-power.reloadConfig();
+statusPill.addWidget("org.nexus.controlcenter");

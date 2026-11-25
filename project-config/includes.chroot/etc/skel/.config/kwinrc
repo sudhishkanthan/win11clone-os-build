@@ -5,6 +5,11 @@ ButtonsOnRight=IAX
 library=org.kde.kwin.aurorae
 theme=__aurorae__svg__Fluent-round-dark
 
+[Compositing]
+Enabled=true
+GLCore=true
+OpenGLIsUnsafe=false
+
 [Plugins]
 blurEnabled=true
 contrastEnabled=true

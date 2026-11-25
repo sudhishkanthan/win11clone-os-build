@@ -3,14 +3,11 @@ var panel = new Panel();
 panel.location = "bottom";
 panel.alignment = "center";
 panel.lengthMode = "fit";
+panel.opacity = "translucent";
 panel.height = 60;
 panel.floating = true;
 
-var kickoff = panel.addWidget("org.kde.plasma.kickoff");
-kickoff.currentConfigGroup = ["General"];
-kickoff.writeConfig("icon", "distributor-logo");
-kickoff.writeConfig("favoritesPortedToKAstats", "true");
-kickoff.reloadConfig();
+panel.addWidget("org.nexus.startmenu");
 
 var tasks = panel.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];

@@ -1,0 +1,17 @@
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "The Nexus OS"
+            }
+        ],
+        "Category": "System Information",
+        "Description": "Right status pill with Wi-Fi, Volume, Battery, Power & Quick Settings popup",
+        "Icon": "network-wireless",
+        "Id": "org.nexus.controlcenter",
+        "License": "GPL-3.0+",
+        "Name": "Nexus Control Center",
+        "Version": "1.0"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

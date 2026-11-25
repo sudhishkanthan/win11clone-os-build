@@ -55,9 +55,13 @@ done
 
 # Apply pill-rounded frosted glass panel-background (24px corners + 1px bright rim border)
 if [[ -f /usr/share/plasma/desktoptheme/nexus-panel-background.svg ]] && [[ -d /usr/share/plasma/desktoptheme/Fluent-round-dark ]]; then
-  for sub in "widgets" "translucent/widgets"; do
+  for sub in "widgets" "translucent/widgets" "opaque/widgets"; do
     mkdir -p "/usr/share/plasma/desktoptheme/Fluent-round-dark/${sub}"
     gzip -c /usr/share/plasma/desktoptheme/nexus-panel-background.svg > "/usr/share/plasma/desktoptheme/Fluent-round-dark/${sub}/panel-background.svgz"
+  done
+  for sub in "dialogs" "translucent/dialogs" "opaque/dialogs"; do
+    mkdir -p "/usr/share/plasma/desktoptheme/Fluent-round-dark/${sub}"
+    gzip -c /usr/share/plasma/desktoptheme/nexus-panel-background.svg > "/usr/share/plasma/desktoptheme/Fluent-round-dark/${sub}/background.svgz"
   done
 fi
 

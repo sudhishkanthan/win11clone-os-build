@@ -17,22 +17,25 @@ jobs:
           sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android || true
           df -h
 
-      - name: Install Debian live-build Toolchain
+      - name: Build NexusOS-1.0-amd64.iso in Debian Trixie container
         run: |
-          sudo apt-get update
-          sudo apt-get install -y live-build debootstrap debian-archive-keyring squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools
-          if [ ! -e /usr/share/debootstrap/scripts/trixie ] && [ -e /usr/share/debootstrap/scripts/sid ]; then
-            sudo ln -s sid /usr/share/debootstrap/scripts/trixie
-          fi
-
-      - name: Ensure Scripts Are Executable
-        run: |
-          chmod +x auto/config build.sh
-          chmod +x config/hooks/live/*.hook.chroot
-          chmod +x config/includes.chroot/usr/local/bin/*
-
-      - name: Build NexusOS-1.0-amd64.iso
-        run: ./build.sh
+          set -euo pipefail
+          docker run --privileged --rm \
+            -v /dev:/dev \
+            -v "${GITHUB_WORKSPACE}:/build" \
+            -w /build \
+            debian:trixie \
+            bash -c "
+              set -euo pipefail
+              export DEBIAN_FRONTEND=noninteractive
+              apt-get update -qq
+              apt-get install -y --no-install-recommends live-build debootstrap debian-archive-keyring squashfs-tools xorriso isolinux syslinux-common grub-pc-bin grub-efi-amd64-bin mtools dosfstools ca-certificates sudo
+              chmod +x auto/config build.sh
+              chmod +x config/hooks/live/*.hook.chroot
+              chmod +x config/includes.chroot/usr/local/bin/*
+              ./build.sh
+            "
+          sudo chown -R runner:runner "${GITHUB_WORKSPACE}"
 
       - name: Upload Bootable ISO Artifact
         uses: actions/upload-artifact@v4

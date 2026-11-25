@@ -20,7 +20,10 @@ jobs:
       - name: Install Debian live-build Toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools
+          sudo apt-get install -y live-build debootstrap debian-archive-keyring squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools
+          if [ ! -e /usr/share/debootstrap/scripts/trixie ] && [ -e /usr/share/debootstrap/scripts/sid ]; then
+            sudo ln -s sid /usr/share/debootstrap/scripts/trixie
+          fi
 
       - name: Ensure Scripts Are Executable
         run: |

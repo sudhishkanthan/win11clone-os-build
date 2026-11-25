@@ -13,21 +13,15 @@ for (var j = 0; j < allDesktops.length; j++) {
     d.writeConfig("Image", "file:///usr/share/wallpapers/NexusOS/contents/images/1920x1080.jpg");
 }
 
-// 1. TOP CENTER PILL: Minimal frosted glass time & date notch
+// 1. TOP CENTER PILL: Single-line frosted glass time & date notch
 var topPill = new Panel();
 topPill.location = "top";
 topPill.alignment = "center";
 topPill.lengthMode = "fit";
-topPill.height = 30;
+topPill.height = 32;
 topPill.floating = true;
 
-var clock = topPill.addWidget("org.kde.plasma.digitalclock");
-clock.currentConfigGroup = ["Appearance"];
-clock.writeConfig("showDate", "true");
-clock.writeConfig("dateFormat", "custom");
-clock.writeConfig("customDateFormat", "ddd, MMM d");
-clock.writeConfig("use24hFormat", "2");
-clock.reloadConfig();
+topPill.addWidget("org.nexus.topclock");
 
 // 2. BOTTOM FLOATING DOCK: Centered application pill
 var dock = new Panel();
@@ -48,9 +42,9 @@ kickoff.reloadConfig();
 var tasks = dock.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];
 tasks.writeConfig("launchers", [
+    "applications:nexus-search.desktop",
     "applications:org.kde.dolphin.desktop",
     "applications:org.kde.falkon.desktop",
-    "applications:firefox-esr.desktop",
     "applications:org.kde.konsole.desktop",
     "applications:org.kde.kate.desktop",
     "applications:org.kde.kcalc.desktop",
@@ -62,7 +56,8 @@ tasks.writeConfig("launchers", [
 tasks.writeConfig("indicateAudioStreams", "true");
 tasks.reloadConfig();
 
-// Trash Widget inside dock
+// Subtle divider + Trash Widget inside dock
+dock.addWidget("org.kde.plasma.marginsseparator");
 dock.addWidget("org.kde.plasma.trash");
 
 // 3. BOTTOM RIGHT STATUS ISLAND: Wi-Fi, Volume, Battery, Power
@@ -70,7 +65,25 @@ var statusPill = new Panel();
 statusPill.location = "bottom";
 statusPill.alignment = "right";
 statusPill.lengthMode = "fit";
-statusPill.height = 56;
+statusPill.height = 60;
 statusPill.floating = true;
 
-statusPill.addWidget("org.kde.plasma.systemtray");
+var tray = statusPill.addWidget("org.kde.plasma.systemtray");
+tray.currentConfigGroup = ["General"];
+tray.writeConfig("hiddenItems", [
+    "org.kde.plasma.clipboard",
+    "org.kde.plasma.devicenotifier",
+    "org.kde.plasma.keyboardlayout",
+    "org.kde.kscreen",
+    "org.kde.plasma.notifications",
+    "org.kde.plasma.mediacontroller",
+    "org.kde.plasma.brightness",
+    "org.kde.plasma.keyboardindicator"
+]);
+tray.reloadConfig();
+
+var power = statusPill.addWidget("org.kde.plasma.lock_logout");
+power.currentConfigGroup = ["General"];
+power.writeConfig("show_lockScreen", "false");
+power.writeConfig("show_requestShutDown", "true");
+power.reloadConfig();

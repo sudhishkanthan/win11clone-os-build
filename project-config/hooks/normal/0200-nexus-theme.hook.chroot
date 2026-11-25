@@ -53,6 +53,14 @@ EOF
   fi
 done
 
+# Apply pill-rounded frosted glass panel-background (24px corners + 1px bright rim border)
+if [[ -f /usr/share/plasma/desktoptheme/nexus-panel-background.svg ]] && [[ -d /usr/share/plasma/desktoptheme/Fluent-round-dark ]]; then
+  for sub in "widgets" "translucent/widgets"; do
+    mkdir -p "/usr/share/plasma/desktoptheme/Fluent-round-dark/${sub}"
+    gzip -c /usr/share/plasma/desktoptheme/nexus-panel-background.svg > "/usr/share/plasma/desktoptheme/Fluent-round-dark/${sub}/panel-background.svgz"
+  done
+fi
+
 # Refresh icon caches including Nexus-OS-Icons
 if command -v gtk-update-icon-cache >/dev/null 2>&1; then
   for icon_dir in /usr/share/icons/Nexus-OS-Icons /usr/share/icons/Tela-circle*; do

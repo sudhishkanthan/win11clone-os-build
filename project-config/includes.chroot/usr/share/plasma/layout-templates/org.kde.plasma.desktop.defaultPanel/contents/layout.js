@@ -15,9 +15,9 @@ kickoff.reloadConfig();
 var tasks = panel.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];
 tasks.writeConfig("launchers", [
+    "applications:nexus-search.desktop",
     "applications:org.kde.dolphin.desktop",
     "applications:org.kde.falkon.desktop",
-    "applications:firefox-esr.desktop",
     "applications:org.kde.konsole.desktop",
     "applications:org.kde.kate.desktop",
     "applications:org.kde.kcalc.desktop",
@@ -29,4 +29,5 @@ tasks.writeConfig("launchers", [
 tasks.writeConfig("indicateAudioStreams", "true");
 tasks.reloadConfig();
 
+panel.addWidget("org.kde.plasma.marginsseparator");
 panel.addWidget("org.kde.plasma.trash");

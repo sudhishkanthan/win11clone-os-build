@@ -17,6 +17,9 @@ plasma-pa
 polkit-kde-agent-1
 kio-extras
 kde-cli-tools
+qt-style-kvantum
 qt6-style-kvantum
+libqt6svg6
+qml6-module-qtquick-layouts
 fonts-noto
 fonts-noto-color-emoji

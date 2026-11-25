@@ -14,4 +14,4 @@ Theme=Nexus-OS-Icons
 [KDE]
 LookAndFeelPackage=com.github.vinceliuice.Fluent-round-dark
 SingleClick=false
-widgetStyle=kvantum-dark
+widgetStyle=kvantum

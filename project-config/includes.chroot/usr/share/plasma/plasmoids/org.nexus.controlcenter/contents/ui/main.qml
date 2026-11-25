@@ -33,7 +33,11 @@ PlasmoidItem {
     }
 
     compactRepresentation: MouseArea {
-        implicitWidth: iconRow.implicitWidth + 24
+        Layout.minimumWidth: iconRow.implicitWidth + 32
+        Layout.preferredWidth: Layout.minimumWidth
+        Layout.minimumHeight: 44
+        Layout.preferredHeight: 44
+        implicitWidth: iconRow.implicitWidth + 32
         implicitHeight: 44
         hoverEnabled: true
         onClicked: {
@@ -49,26 +53,30 @@ PlasmoidItem {
             spacing: 16
 
             Image {
-                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/wifi_signal.svg"
-                width: 17; height: 17
-                fillMode: Image.PreserveAspectFit
-                smooth: true
-            }
-            Image {
-                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/volume_speaker.svg"
-                width: 17; height: 17
-                fillMode: Image.PreserveAspectFit
-                smooth: true
-            }
-            Image {
-                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/battery.svg"
+                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/wifi_signal.svg"
                 width: 18; height: 18
+                sourceSize.width: 18; sourceSize.height: 18
                 fillMode: Image.PreserveAspectFit
                 smooth: true
             }
             Image {
-                source: "/usr/share/icons/Nexus-OS-Icons/scalable/actions/power_shutdown.svg"
-                width: 17; height: 17
+                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/volume_speaker.svg"
+                width: 18; height: 18
+                sourceSize.width: 18; sourceSize.height: 18
+                fillMode: Image.PreserveAspectFit
+                smooth: true
+            }
+            Image {
+                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/battery.svg"
+                width: 19; height: 19
+                sourceSize.width: 19; sourceSize.height: 19
+                fillMode: Image.PreserveAspectFit
+                smooth: true
+            }
+            Image {
+                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/actions/power_shutdown.svg"
+                width: 18; height: 18
+                sourceSize.width: 18; sourceSize.height: 18
                 fillMode: Image.PreserveAspectFit
                 smooth: true
             }
@@ -109,8 +117,8 @@ PlasmoidItem {
                             color: root.wifiOn ? "#3B82F6" : Qt.rgba(1, 1, 1, 0.10)
                             Image {
                                 anchors.centerIn: parent
-                                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/wifi_signal.svg"
-                                width: 16; height: 16
+                                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/wifi_signal.svg"
+                                width: 16; height: 16; sourceSize.width: 16; sourceSize.height: 16
                             }
                         }
                         Column {
@@ -145,8 +153,8 @@ PlasmoidItem {
                             color: root.btOn ? "#3B82F6" : Qt.rgba(1, 1, 1, 0.10)
                             Image {
                                 anchors.centerIn: parent
-                                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/bluetooth.svg"
-                                width: 16; height: 16
+                                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/bluetooth.svg"
+                                width: 16; height: 16; sourceSize.width: 16; sourceSize.height: 16
                             }
                         }
                         Column {
@@ -181,8 +189,8 @@ PlasmoidItem {
                             color: root.dndOn ? "#3B82F6" : Qt.rgba(1, 1, 1, 0.10)
                             Image {
                                 anchors.centerIn: parent
-                                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/do_not_disturb_bell.svg"
-                                width: 16; height: 16
+                                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/do_not_disturb_bell.svg"
+                                width: 16; height: 16; sourceSize.width: 16; sourceSize.height: 16
                             }
                         }
                         Column {
@@ -214,8 +222,8 @@ PlasmoidItem {
                             color: root.nightOn ? "#3B82F6" : Qt.rgba(1, 1, 1, 0.10)
                             Image {
                                 anchors.centerIn: parent
-                                source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/night_light_moon.svg"
-                                width: 16; height: 16
+                                source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/night_light_moon.svg"
+                                width: 16; height: 16; sourceSize.width: 16; sourceSize.height: 16
                             }
                         }
                         Column {
@@ -275,8 +283,8 @@ PlasmoidItem {
                         anchors.leftMargin: 12
                         anchors.rightMargin: 12
                         Image {
-                            source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/wifi_signal.svg"
-                            width: 14; height: 14
+                            source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/wifi_signal.svg"
+                            width: 14; height: 14; sourceSize.width: 14; sourceSize.height: 14
                         }
                         Text {
                             text: root.activeNetName
@@ -332,8 +340,8 @@ PlasmoidItem {
                 spacing: 10
 
                 Image {
-                    source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/volume_speaker.svg"
-                    width: 15; height: 15
+                    source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/volume_speaker.svg"
+                    width: 15; height: 15; sourceSize.width: 15; sourceSize.height: 15
                 }
 
                 Item {
@@ -398,8 +406,8 @@ PlasmoidItem {
                         anchors.centerIn: parent
                         spacing: 6
                         Image {
-                            source: "/usr/share/icons/Nexus-OS-Icons/scalable/status/battery.svg"
-                            width: 14; height: 14
+                            source: "file:///usr/share/icons/Nexus-OS-Icons/scalable/status/battery.svg"
+                            width: 14; height: 14; sourceSize.width: 14; sourceSize.height: 14
                             anchors.verticalCenter: parent.verticalCenter
                         }
                         Text {

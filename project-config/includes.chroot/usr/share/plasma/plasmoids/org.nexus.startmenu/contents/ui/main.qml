@@ -24,30 +24,33 @@ PlasmoidItem {
     }
 
     property var pinnedApps: [
-        { name: "Files",      cmd: "dolphin",         icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/dolphin.png" },
-        { name: "Browser",    cmd: "falkon",          icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/falkon.png" },
-        { name: "Terminal",   cmd: "konsole",         icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/konsole.png" },
-        { name: "Notepad",    cmd: "kate",            icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/kate.png" },
-        { name: "Calculator", cmd: "kcalc",           icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/kcalc.png" },
-        { name: "Discover",   cmd: "plasma-discover", icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/discover.png" },
-        { name: "Photos",     cmd: "gwenview",        icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/gwenview.png" },
-        { name: "Media",      cmd: "vlc",             icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/vlc.png" },
-        { name: "Archive",    cmd: "ark",             icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/ark.png" },
-        { name: "Settings",   cmd: "systemsettings",  icon: "/usr/share/icons/Nexus-OS-Icons/128x128/apps/systemsettings.png" }
+        { name: "Files",      cmd: "dolphin",         icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/dolphin.png" },
+        { name: "Browser",    cmd: "falkon",          icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/falkon.png" },
+        { name: "Terminal",   cmd: "konsole",         icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/konsole.png" },
+        { name: "Notepad",    cmd: "kate",            icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/kate.png" },
+        { name: "Calculator", cmd: "kcalc",           icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/kcalc.png" },
+        { name: "Discover",   cmd: "plasma-discover", icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/discover.png" },
+        { name: "Photos",     cmd: "gwenview",        icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/gwenview.png" },
+        { name: "Media",      cmd: "vlc",             icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/vlc.png" },
+        { name: "Archive",    cmd: "ark",             icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/ark.png" },
+        { name: "Settings",   cmd: "systemsettings",  icon: "file:///usr/share/icons/Nexus-OS-Icons/128x128/apps/systemsettings.png" }
     ]
 
     compactRepresentation: MouseArea {
+        Layout.minimumWidth: 46
+        Layout.preferredWidth: 46
+        Layout.minimumHeight: 46
+        Layout.preferredHeight: 46
         implicitWidth: 46
         implicitHeight: 46
         hoverEnabled: true
         onClicked: {
             root.expanded = !root.expanded
-            if (root.expanded) searchInput.forceActiveFocus()
         }
 
         Image {
             anchors.centerIn: parent
-            source: "/usr/share/pixmaps/nexus-logo.png"
+            source: "file:///usr/share/pixmaps/nexus-logo.png"
             width: parent.containsMouse ? 38 : 34
             height: parent.containsMouse ? 38 : 34
             fillMode: Image.PreserveAspectFit

@@ -65,6 +65,16 @@ if [[ -f /usr/share/plasma/desktoptheme/nexus-panel-background.svg ]] && [[ -d /
   done
 fi
 
+# Tune Kvantum Fluent-round-dark for hybrid frosted header + solid obsidian (#0F131C / #0B0F17)
+KV_CFG="/usr/share/Kvantum/Fluent-round-dark/Fluent-round-dark.kvconfig"
+if [[ -f "${KV_CFG}" ]]; then
+  sed -i 's|^window.color=.*|window.color=#0b0f17|g' "${KV_CFG}" || true
+  sed -i 's|^base.color=.*|base.color=#0f131c|g' "${KV_CFG}" || true
+  sed -i 's|^alt.base.color=.*|alt.base.color=#141926|g' "${KV_CFG}" || true
+  sed -i 's|^translucent_windows=.*|translucent_windows=true|g' "${KV_CFG}" || true
+  sed -i 's|^blurring=.*|blurring=true|g' "${KV_CFG}" || true
+fi
+
 # Refresh icon caches including Nexus-OS-Icons
 if command -v gtk-update-icon-cache >/dev/null 2>&1; then
   for icon_dir in /usr/share/icons/Nexus-OS-Icons /usr/share/icons/Tela-circle*; do

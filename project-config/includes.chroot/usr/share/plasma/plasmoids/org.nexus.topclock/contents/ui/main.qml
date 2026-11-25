@@ -18,7 +18,11 @@ PlasmoidItem {
 
     compactRepresentation: MouseArea {
         id: compactRoot
-        implicitWidth: clockLabel.implicitWidth + 28
+        Layout.minimumWidth: clockLabel.implicitWidth + 32
+        Layout.preferredWidth: Layout.minimumWidth
+        Layout.minimumHeight: 28
+        Layout.preferredHeight: 28
+        implicitWidth: clockLabel.implicitWidth + 32
         implicitHeight: 28
         hoverEnabled: true
         onClicked: root.expanded = !root.expanded

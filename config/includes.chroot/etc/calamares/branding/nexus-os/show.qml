@@ -24,7 +24,7 @@ Presentation {
                 anchors.centerIn: parent
                 spacing: 18
                 Image { source: "slide_desktop.png"; width: 560; height: 315; fillMode: Image.PreserveAspectFit; anchors.horizontalCenter: parent.horizontalCenter }
-                Text { text: "Welcome to The Nexus OS 1.0"; color: "#FFFFFF"; font.family: "SF Pro Display"; font.pixelSize: 22; font.bold: true; anchors.horizontalCenter: parent.horizontalCenter }
+                Text { text: "Welcome to The Nexus OS 1.1"; color: "#FFFFFF"; font.family: "SF Pro Display"; font.pixelSize: 22; font.bold: true; anchors.horizontalCenter: parent.horizontalCenter }
                 Text { text: "Floating frosted-glass dock, centered Start Menu, and crisp 2.5D icons."; color: "#CBD5E1"; font.family: "SF Pro Display"; font.pixelSize: 14; anchors.horizontalCenter: parent.horizontalCenter }
             }
         }

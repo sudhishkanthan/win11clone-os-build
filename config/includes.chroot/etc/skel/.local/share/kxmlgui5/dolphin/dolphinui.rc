@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gui name="dolphin" version="42">
+  <ToolBar name="mainToolBar" alreadyVisited="1" noMerge="1">
+    <text context="@title:menu">Main Toolbar</text>
+    <Action name="go_back"/>
+    <Action name="go_forward"/>
+    <Action name="go_up"/>
+    <Spacer name="spacer_0"/>
+    <Action name="url_navigators"/>
+    <Spacer name="spacer_1"/>
+    <Action name="icons"/>
+    <Action name="details"/>
+    <Action name="edit_find"/>
+    <Action name="hamburger_menu"/>
+  </ToolBar>
+</gui>

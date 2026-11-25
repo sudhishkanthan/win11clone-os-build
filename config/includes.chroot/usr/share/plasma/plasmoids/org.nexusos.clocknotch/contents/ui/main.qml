@@ -57,7 +57,7 @@ PlasmoidItem {
                     text: Qt.formatDate(root.now, "dddd, MMMM d, yyyy")
                     color: "#BAE6FD"
                     font.family: "SF Pro Display"
-                    font.pixelSize: 13.5
+                    font.pixelSize: 14
                     font.weight: Font.Medium
                 }
             }
@@ -93,7 +93,7 @@ PlasmoidItem {
                     anchors.centerIn: parent
                     spacing: 10
                     Image { source: "/usr/share/icons/NexusOS/32x32/actions/system-lock-screen-symbolic.png"; width: 16; height: 16 }
-                    Text { text: "Lock & Switch to Login Screen"; color: "#FFFFFF"; font.family: "SF Pro Display"; font.pixelSize: 13.5; font.bold: true }
+                    Text { text: "Lock & Switch to Login Screen"; color: "#FFFFFF"; font.family: "SF Pro Display"; font.pixelSize: 14; font.bold: true }
                 }
                 MouseArea {
                     id: lockMa

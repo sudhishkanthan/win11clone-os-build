@@ -122,7 +122,7 @@ PlasmoidItem {
                                 text: modelData.name
                                 color: "#F1F5F9"
                                 font.family: "SF Pro Display"
-                                font.pixelSize: 11.5
+                                font.pixelSize: 12
                             }
                         }
                         MouseArea {

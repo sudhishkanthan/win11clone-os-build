@@ -1,0 +1,32 @@
+[General]
+BrowseThroughArchives=true
+EditableUrl=false
+GlobalViewProps=true
+RememberOpenedTabs=false
+ShowFullPath=false
+ShowFullPathInTitlebar=false
+ShowSelectionToggle=false
+ShowStatusBar=FullWidth
+ShowToolTips=false
+SortingChoice=CaseInsensitiveSorting
+SplitView=false
+Version=202
+
+[IconsMode]
+IconSize=64
+MaximumTextLines=2
+PreviewSize=64
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[PlacesPanel]
+IconSize=22
+
+[PreviewSettings]
+Plugins=imagethumbnail,jpegthumbnail,svgthumbnail,ffmpegthumbs

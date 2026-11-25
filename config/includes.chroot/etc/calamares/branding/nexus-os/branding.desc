@@ -10,10 +10,10 @@ windowPlacement: center
 strings:
     productName:         The Nexus OS
     shortProductName:    Nexus OS
-    version:             1.0
-    shortVersion:        1.0
-    versionedName:       The Nexus OS 1.0
-    shortVersionedName:  Nexus OS 1.0
+    version:             1.1
+    shortVersion:        1.1
+    versionedName:       The Nexus OS 1.1
+    shortVersionedName:  Nexus OS 1.1
     bootloaderEntryName: The Nexus OS
     productUrl:          https://thenexusos.local
     supportUrl:          https://thenexusos.local/support

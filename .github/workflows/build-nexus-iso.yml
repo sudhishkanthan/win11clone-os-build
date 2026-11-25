@@ -1,4 +1,4 @@
-name: Build The Nexus OS 1.0 ISO
+name: Build The Nexus OS 1.1 ISO
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ jobs:
   build-iso:
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout Nexus OS Repo
+      - name: Checkout Nexus OS 1.1 Repo
         uses: actions/checkout@v4
 
       - name: Free Disk Space on Runner
@@ -17,29 +17,23 @@ jobs:
           sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android || true
           df -h
 
-      - name: Build NexusOS-1.0-amd64.iso in Debian Trixie container
+      - name: Ensure Scripts Are Executable
         run: |
-          set -euo pipefail
-          docker run --privileged --rm \
-            -v /dev:/dev \
-            -v "${GITHUB_WORKSPACE}:/build" \
+          chmod +x auto/config build.sh
+          chmod +x config/hooks/live/*.hook.chroot
+          chmod +x config/includes.chroot/usr/local/bin/* 2>/dev/null || true
+
+      - name: Build NexusOS-1.1-amd64.iso inside Native Debian Trixie Container
+        run: |
+          docker run --rm --privileged \
+            -v "${{ github.workspace }}:/build" \
             -w /build \
             debian:trixie \
-            bash -c "
-              set -euo pipefail
-              export DEBIAN_FRONTEND=noninteractive
-              apt-get update -qq
-              apt-get install -y --no-install-recommends live-build debootstrap debian-archive-keyring squashfs-tools xorriso isolinux syslinux-common grub-pc-bin grub-efi-amd64-bin mtools dosfstools ca-certificates sudo
-              chmod +x auto/config build.sh
-              chmod +x config/hooks/live/*.hook.chroot
-              chmod +x config/includes.chroot/usr/local/bin/*
-              ./build.sh
-            "
-          sudo chown -R runner:runner "${GITHUB_WORKSPACE}"
+            bash -c "apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y live-build debootstrap squashfs-tools xorriso grub-pc-bin grub-efi-amd64-bin mtools debian-archive-keyring ca-certificates && ./build.sh"
 
       - name: Upload Bootable ISO Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: NexusOS-1.0-amd64-ISO
-          path: NexusOS-1.0-amd64.iso
+          name: NexusOS-1.1-amd64-ISO
+          path: NexusOS-1.1-amd64.iso
           retention-days: 14

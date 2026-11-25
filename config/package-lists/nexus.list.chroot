@@ -1,4 +1,4 @@
-# Core Live-Boot & VirtualBox Guest Guardrails (Debian 13 Trixie)
+# Core Live-Boot & System Guardrails (Debian 13 Trixie)
 live-boot
 live-config
 live-config-systemd
@@ -23,7 +23,7 @@ breeze
 breeze-gtk-theme
 kde-config-gtk-style
 
-# Core Nexus OS Applications (matching all 12 Dock & Start Menu apps)
+# Core Nexus OS Applications (matching all Dock & Start Menu apps)
 dolphin
 konsole
 kate

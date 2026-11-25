@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel>
+<xbel xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks" xmlns:kdepriv="http://www.kde.org/kdepriv" xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info">
+  <info>
+    <metadata owner="http://www.kde.org">
+      <GroupState-Places-IsHidden>false</GroupState-Places-IsHidden>
+      <GroupState-Remote-IsHidden>true</GroupState-Remote-IsHidden>
+      <GroupState-Devices-IsHidden>false</GroupState-Devices-IsHidden>
+      <GroupState-RemovableDevices-IsHidden>false</GroupState-RemovableDevices-IsHidden>
+      <GroupState-Tags-IsHidden>true</GroupState-Tags-IsHidden>
+      <GroupState-SearchFor-IsHidden>true</GroupState-SearchFor-IsHidden>
+    </metadata>
+  </info>
+  <bookmark href="file:///home/live"><title>Home</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="user-home"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-home</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="file:///home/live/Desktop"><title>Desktop</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="user-desktop"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-desktop</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="file:///home/live/Documents"><title>Documents</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="folder-documents"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-documents</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="file:///home/live/Downloads"><title>Downloads</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="folder-downloads"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-downloads</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="file:///home/live/Pictures"><title>Pictures</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="folder-pictures"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-pictures</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="file:///home/live/Music"><title>Music</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="folder-music"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-music</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="file:///home/live/Videos"><title>Videos</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="folder-videos"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-videos</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+  <bookmark href="trash:/"><title>Trash</title><info><metadata owner="http://freedesktop.org"><bookmark:icon name="user-trash"/></metadata><metadata owner="http://www.kde.org"><ID>nexus-trash</ID><isSystemItem>true</isSystemItem></metadata></info></bookmark>
+</xbel>

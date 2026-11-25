@@ -66,7 +66,7 @@ PlasmoidItem {
                             Image { anchors.centerIn: parent; width: 16; height: 16; source: "/usr/share/icons/NexusOS/32x32/status/network-wireless-signal-excellent-symbolic.png" }
                         }
                         Column {
-                            Text { text: "Wi-Fi"; color: "#F8FAFC"; font.family: "SF Pro Display"; font.pixelSize: 12.5; font.bold: true }
+                            Text { text: "Wi-Fi"; color: "#F8FAFC"; font.family: "SF Pro Display"; font.pixelSize: 12; font.bold: true }
                             Text { text: root.wifiOn ? "Connected" : "Off"; color: "#CBD5E1"; font.family: "SF Pro Display"; font.pixelSize: 11 }
                         }
                     }
@@ -86,7 +86,7 @@ PlasmoidItem {
                             Image { anchors.centerIn: parent; width: 16; height: 16; source: "/usr/share/icons/NexusOS/32x32/status/bluetooth-active-symbolic.png" }
                         }
                         Column {
-                            Text { text: "Bluetooth"; color: "#F8FAFC"; font.family: "SF Pro Display"; font.pixelSize: 12.5; font.bold: true }
+                            Text { text: "Bluetooth"; color: "#F8FAFC"; font.family: "SF Pro Display"; font.pixelSize: 12; font.bold: true }
                             Text { text: root.btOn ? "On" : "Off"; color: "#CBD5E1"; font.family: "SF Pro Display"; font.pixelSize: 11 }
                         }
                     }
@@ -126,7 +126,7 @@ PlasmoidItem {
                             Image { anchors.centerIn: parent; width: 16; height: 16; source: "/usr/share/icons/NexusOS/32x32/actions/system-suspend-symbolic.png" }
                         }
                         Column {
-                            Text { text: "Night Light"; color: "#F8FAFC"; font.family: "SF Pro Display"; font.pixelSize: 12.5; font.bold: true }
+                            Text { text: "Night Light"; color: "#F8FAFC"; font.family: "SF Pro Display"; font.pixelSize: 12; font.bold: true }
                             Text { text: root.nightOn ? "On" : "Off"; color: "#CBD5E1"; font.family: "SF Pro Display"; font.pixelSize: 11 }
                         }
                     }
@@ -140,7 +140,7 @@ PlasmoidItem {
                 RowLayout {
                     anchors.fill: parent; anchors.leftMargin: 12; anchors.rightMargin: 12
                     Image { source: "/usr/share/icons/NexusOS/32x32/status/network-wireless-signal-excellent-symbolic.png"; width: 16; height: 16 }
-                    Text { text: "Manage Wi-Fi Networks..."; color: "#F1F5F9"; font.family: "SF Pro Display"; font.pixelSize: 12.5; font.weight: Font.Medium }
+                    Text { text: "Manage Wi-Fi Networks..."; color: "#F1F5F9"; font.family: "SF Pro Display"; font.pixelSize: 12; font.weight: Font.Medium }
                     Item { Layout.fillWidth: true }
                     Text { text: "›"; color: "#94A3B8"; font.pixelSize: 16 }
                 }

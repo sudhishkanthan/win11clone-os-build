@@ -9,8 +9,6 @@ sudo
 network-manager
 pipewire-audio
 bluez
-virtualbox-guest-utils
-virtualbox-guest-x11
 
 # KDE Plasma 6 Desktop & SDDM Display Manager
 plasma-desktop
@@ -33,7 +31,7 @@ kcalc
 gwenview
 vlc
 ark
-spectacle
+kde-spectacle
 plasma-systemmonitor
 plasma-discover
 firefox-esr

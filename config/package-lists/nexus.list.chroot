@@ -1,0 +1,49 @@
+# Core Live-Boot & VirtualBox Guest Guardrails (Debian 13 Trixie)
+live-boot
+live-config
+live-config-systemd
+live-tools
+user-setup
+iproute2
+sudo
+network-manager
+pipewire-audio
+bluez
+virtualbox-guest-utils
+virtualbox-guest-x11
+
+# KDE Plasma 6 Desktop & SDDM Display Manager
+plasma-desktop
+plasma-workspace
+kwin-wayland
+kwin-x11
+sddm
+qml6-module-qtquick-effects
+plymouth
+plymouth-themes
+breeze
+breeze-gtk-theme
+kde-config-gtk-style
+
+# Core Nexus OS Applications (matching all 12 Dock & Start Menu apps)
+dolphin
+konsole
+kate
+kcalc
+gwenview
+vlc
+ark
+spectacle
+plasma-systemmonitor
+plasma-discover
+firefox-esr
+calamares
+calamares-settings-debian
+
+# Typography (SF Pro Display -> Inter Display fallback)
+fonts-inter
+fonts-dejavu
+fonts-noto-color-emoji
+
+# CLI audio/network helpers for Nexus Quick Settings plasmoid
+pulseaudio-utils

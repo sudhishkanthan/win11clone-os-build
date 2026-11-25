@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Search
-Comment=Search apps, files, and settings
-Exec=qdbus6 org.kde.krunner /App display
-Icon=edit-find
-Categories=System;Utility;
-NoDisplay=false

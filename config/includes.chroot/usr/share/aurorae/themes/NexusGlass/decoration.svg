@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <!-- Active Translucent Frosted Headerbar -->
+  <g id="decoration-top">
+    <rect x="20" y="0" width="60" height="46" fill="#0E121C" fill-opacity="0.58"/>
+    <rect x="20" y="0" width="60" height="1" fill="#FFFFFF" fill-opacity="0.16"/>
+    <rect x="20" y="45" width="60" height="1" fill="#FFFFFF" fill-opacity="0.09"/>
+  </g>
+  <g id="decoration-topleft">
+    <path d="M 0 20 Q 0 0 20 0 L 20 46 L 0 46 Z" fill="#0E121C" fill-opacity="0.58"/>
+    <path d="M 0.5 20 Q 0.5 0.5 20 0.5" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1"/>
+  </g>
+  <g id="decoration-topright">
+    <path d="M 80 0 Q 100 0 100 20 L 100 46 L 80 46 Z" fill="#0E121C" fill-opacity="0.58"/>
+    <path d="M 80 0.5 Q 99.5 0.5 99.5 20" fill="none" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1"/>
+  </g>
+  <!-- Solid Opaque Dark Window Body Borders -->
+  <g id="decoration-left"><rect x="0" y="46" width="1" height="40" fill="#FFFFFF" fill-opacity="0.12"/></g>
+  <g id="decoration-right"><rect x="99" y="46" width="1" height="40" fill="#FFFFFF" fill-opacity="0.12"/></g>
+  <g id="decoration-bottom"><rect x="20" y="99" width="60" height="1" fill="#FFFFFF" fill-opacity="0.12"/></g>
+  <g id="decoration-bottomleft"><rect x="0" y="99" width="20" height="1" fill="#FFFFFF" fill-opacity="0.12"/></g>
+  <g id="decoration-bottomright"><rect x="80" y="99" width="20" height="1" fill="#FFFFFF" fill-opacity="0.12"/></g>
+  <g id="decoration-center"><rect x="20" y="46" width="60" height="40" fill="#0F131C" fill-opacity="1.0"/></g>
+</svg>

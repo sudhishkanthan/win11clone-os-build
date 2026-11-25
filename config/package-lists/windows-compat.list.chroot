@@ -1,0 +1,9 @@
+# Windows .exe Compatibility & Office Productivity Stack
+wine
+wine64
+winetricks
+cabextract
+flatpak
+plasma-discover-backend-flatpak
+libreoffice-calc
+libreoffice-writer

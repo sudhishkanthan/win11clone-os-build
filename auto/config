@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+lb config noauto \
+  --architectures amd64 \
+  --distribution trixie \
+  --archive-areas "main contrib non-free non-free-firmware" \
+  --debian-installer live \
+  --apt-recommends false \
+  --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8 username=live hostname=the-nexus-os" \
+  --iso-application "The Nexus OS 1.0" \
+  --iso-publisher "The Nexus OS" \
+  --iso-volume "NEXUS_OS_1_0" \
+  "${@}"

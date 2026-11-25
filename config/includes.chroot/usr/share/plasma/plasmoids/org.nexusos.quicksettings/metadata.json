@@ -1,0 +1,14 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [{"Name": "The Nexus OS"}],
+    "Category": "System Information",
+    "Description": "Translucent Frosted Wi-Fi, Volume, Battery and Power Quick Settings for The Nexus OS",
+    "Icon": "network-wireless-signal-excellent-symbolic",
+    "Id": "org.nexusos.quicksettings",
+    "License": "MIT",
+    "Name": "Nexus Quick Settings",
+    "Version": "1.0"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0"
+}

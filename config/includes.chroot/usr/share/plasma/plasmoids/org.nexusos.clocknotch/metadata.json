@@ -1,0 +1,14 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [{"Name": "The Nexus OS"}],
+    "Category": "Date and Time",
+    "Description": "Top-Bar Clock Notch with Calendar and Direct Lock/Login Screen Button",
+    "Icon": "clock",
+    "Id": "org.nexusos.clocknotch",
+    "License": "MIT",
+    "Name": "Nexus Clock Notch",
+    "Version": "1.0"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0"
+}

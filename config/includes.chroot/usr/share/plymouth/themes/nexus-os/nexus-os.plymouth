@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=The Nexus OS
+Description=Minimal Black Boot Splash for The Nexus OS
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/nexus-os
+ScriptFile=/usr/share/plymouth/themes/nexus-os/nexus-os.script

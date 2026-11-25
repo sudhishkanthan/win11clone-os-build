@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="24" viewBox="0 0 96 24">
+  <g id="active-center">
+    <rect x="0" y="0" width="24" height="24" fill="none"/>
+    <path d="M 7.5 7.5 L 16.5 16.5 M 16.5 7.5 L 7.5 16.5" stroke="#F8FAFC" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <g id="hover-center" transform="translate(24,0)">
+    <circle cx="12" cy="12" r="11" fill="#F43F5E" fill-opacity="0.88"/>
+    <path d="M 7.5 7.5 L 16.5 16.5 M 16.5 7.5 L 7.5 16.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <g id="pressed-center" transform="translate(48,0)">
+    <circle cx="12" cy="12" r="11" fill="#E11D48"/>
+    <path d="M 7.5 7.5 L 16.5 16.5 M 16.5 7.5 L 7.5 16.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+  <g id="inactive-center" transform="translate(72,0)">
+    <rect x="0" y="0" width="24" height="24" fill="none"/>
+    <path d="M 7.5 7.5 L 16.5 16.5 M 16.5 7.5 L 7.5 16.5" stroke="#94A3B8" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+</svg>

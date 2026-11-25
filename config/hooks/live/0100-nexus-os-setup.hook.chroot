@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+# Update icon caches & font cache
+gtk-update-icon-cache -f /usr/share/icons/NexusOS || true
+fc-cache -f -v || true
+
+# Set Nexus OS Plymouth boot splash
+plymouth-set-default-theme nexus-os || true
+
+# Enable essential system services
+systemctl enable sddm || true
+systemctl enable NetworkManager || true
+systemctl enable bluetooth || true

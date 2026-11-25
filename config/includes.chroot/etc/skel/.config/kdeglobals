@@ -1,0 +1,16 @@
+[General]
+ColorScheme=NexusDark
+Name=Nexus Dark
+fixed=DejaVu Sans Mono,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+font=SF Pro Display,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+menuFont=SF Pro Display,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+smallestReadableFont=SF Pro Display,8,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+toolBarFont=SF Pro Display,10,-1,5,400,0,0,0,0,0,0,0,0,0,0,1
+
+[Icons]
+Theme=NexusOS
+
+[KDE]
+LookAndFeelPackage=org.kde.breezedark.desktop
+SingleClick=false
+widgetStyle=breeze

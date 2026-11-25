@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="24" viewBox="0 0 96 24">
+  <g id="active-center">
+    <rect x="6.5" y="6.5" width="11" height="11" rx="2.6" fill="none" stroke="#F8FAFC" stroke-width="2.1"/>
+  </g>
+  <g id="hover-center" transform="translate(24,0)">
+    <circle cx="12" cy="12" r="11" fill="#FFFFFF" fill-opacity="0.16"/>
+    <rect x="6.5" y="6.5" width="11" height="11" rx="2.6" fill="none" stroke="#FFFFFF" stroke-width="2.1"/>
+  </g>
+  <g id="pressed-center" transform="translate(48,0)">
+    <circle cx="12" cy="12" r="11" fill="#FFFFFF" fill-opacity="0.26"/>
+    <rect x="6.5" y="6.5" width="11" height="11" rx="2.6" fill="none" stroke="#FFFFFF" stroke-width="2.1"/>
+  </g>
+  <g id="inactive-center" transform="translate(72,0)">
+    <rect x="6.5" y="6.5" width="11" height="11" rx="2.6" fill="none" stroke="#94A3B8" stroke-width="2.1"/>
+  </g>
+</svg>

@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "[ OK ] Launching The Nexus OS Desktop Shell..."
+exec startplasma-wayland 2>/dev/null || exec startx

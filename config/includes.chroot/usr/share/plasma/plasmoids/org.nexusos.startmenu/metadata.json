@@ -1,0 +1,14 @@
+{
+  "KPackageStructure": "Plasma/Applet",
+  "KPlugin": {
+    "Authors": [{"Name": "The Nexus OS"}],
+    "Category": "Application Launchers",
+    "Description": "Centered Frosted Glass Start Menu for The Nexus OS",
+    "Icon": "start-here",
+    "Id": "org.nexusos.startmenu",
+    "License": "MIT",
+    "Name": "Nexus Start Menu",
+    "Version": "1.0"
+  },
+  "X-Plasma-API-Minimum-Version": "6.0"
+}

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Install The Nexus OS
+Comment=Install The Nexus OS 1.0 to your disk
+Exec=pkexec calamares
+Icon=calamares
+Terminal=false
+Categories=System;

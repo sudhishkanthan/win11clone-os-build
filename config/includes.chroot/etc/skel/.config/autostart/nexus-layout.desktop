@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Nexus OS Shell Layout
+Exec=/usr/local/bin/nexus-apply-layout.sh
+OnlyShowIn=KDE;
+X-KDE-autostart-phase=2

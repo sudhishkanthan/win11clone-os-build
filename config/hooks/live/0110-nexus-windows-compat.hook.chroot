@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+# Enable i386 multiarch so 32-bit Windows installers (e.g., Tally / legacy tools) can install wine32 smoothly
+dpkg --add-architecture i386 || true
+
+# Pre-register Flathub remote so Bottles can be installed in 1 click from Discover or CLI
+if command -v flatpak >/dev/null 2>&1; then
+    flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo || true
+fi

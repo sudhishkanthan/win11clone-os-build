@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+echo "Installing Bottles (Windows app manager) from Flathub..."
+flatpak install -y flathub com.usebottles.bottles
+echo "Done! Launch Bottles from the Nexus OS Start Menu."

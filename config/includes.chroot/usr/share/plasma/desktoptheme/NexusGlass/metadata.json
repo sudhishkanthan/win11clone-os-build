@@ -1,0 +1,11 @@
+{
+  "KPlugin": {
+    "Authors": [{"Name": "The Nexus OS"}],
+    "Description": "Translucent Frosted Dark Glass Panels and Popups for The Nexus OS",
+    "Id": "NexusGlass",
+    "License": "MIT",
+    "Name": "Nexus Glass",
+    "Version": "1.0"
+  },
+  "X-Plasma-API": "5.0"
+}

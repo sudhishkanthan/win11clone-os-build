@@ -18,14 +18,16 @@ var topPill = new Panel();
 topPill.location = "top";
 topPill.alignment = "center";
 topPill.lengthMode = "fit";
-topPill.height = 32;
+topPill.height = 30;
 topPill.floating = true;
 
 var clock = topPill.addWidget("org.kde.plasma.digitalclock");
 clock.currentConfigGroup = ["Appearance"];
 clock.writeConfig("showDate", "true");
 clock.writeConfig("dateFormat", "custom");
-clock.writeConfig("customDateFormat", "HH:mm • ddd, MMM d");
+clock.writeConfig("customDateFormat", "ddd, MMM d");
+clock.writeConfig("use24hFormat", "2");
+clock.reloadConfig();
 
 // 2. BOTTOM FLOATING DOCK: Centered application bar
 var dock = new Panel();
@@ -40,8 +42,9 @@ var kickoff = dock.addWidget("org.kde.plasma.kickoff");
 kickoff.currentConfigGroup = ["General"];
 kickoff.writeConfig("icon", "distributor-logo");
 kickoff.writeConfig("favoritesPortedToKAstats", "true");
+kickoff.reloadConfig();
 
-// Pinned App Launchers
+// Pinned App Launchers (passed as Array so Plasma 6 QStringList parses each entry)
 var tasks = dock.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];
 tasks.writeConfig("launchers", [
@@ -51,11 +54,12 @@ tasks.writeConfig("launchers", [
     "applications:org.kde.konsole.desktop",
     "applications:org.kde.kate.desktop",
     "applications:org.kde.kcalc.desktop",
-    "applications:org.kde.plasma.discover.desktop",
+    "applications:org.kde.discover.desktop",
     "applications:org.kde.gwenview.desktop",
     "applications:systemsettings.desktop"
-].join(","));
+]);
 tasks.writeConfig("indicateAudioStreams", "true");
+tasks.reloadConfig();
 
 // Trash Widget inside dock
 dock.addWidget("org.kde.plasma.trash");

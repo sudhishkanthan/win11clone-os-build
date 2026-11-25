@@ -10,6 +10,7 @@ var kickoff = panel.addWidget("org.kde.plasma.kickoff");
 kickoff.currentConfigGroup = ["General"];
 kickoff.writeConfig("icon", "distributor-logo");
 kickoff.writeConfig("favoritesPortedToKAstats", "true");
+kickoff.reloadConfig();
 
 var tasks = panel.addWidget("org.kde.plasma.icontasks");
 tasks.currentConfigGroup = ["General"];
@@ -20,10 +21,11 @@ tasks.writeConfig("launchers", [
     "applications:org.kde.konsole.desktop",
     "applications:org.kde.kate.desktop",
     "applications:org.kde.kcalc.desktop",
-    "applications:org.kde.plasma.discover.desktop",
+    "applications:org.kde.discover.desktop",
     "applications:org.kde.gwenview.desktop",
     "applications:systemsettings.desktop"
-].join(","));
+]);
 tasks.writeConfig("indicateAudioStreams", "true");
+tasks.reloadConfig();
 
 panel.addWidget("org.kde.plasma.trash");

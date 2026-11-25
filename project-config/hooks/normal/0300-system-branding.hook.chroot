@@ -29,12 +29,28 @@ fi
 
 # Override Debian default wallpapers system-wide with NexusOS dark mountain lake wallpaper
 readonly NEXUS_WALLPAPER="/usr/share/wallpapers/NexusOS/contents/images/1920x1080.jpg"
+readonly NEXUS_LAYOUT="/usr/share/plasma/shells/org.kde.plasma.desktop/contents/layout.js"
+
+if [[ -f "${NEXUS_LAYOUT}" ]]; then
+  echo "[0300-system-branding] Overriding all LookAndFeel desktop layouts with Nexus OS layout..."
+  for lf_dir in /usr/share/plasma/look-and-feel/*; do
+    if [[ -d "${lf_dir}" ]]; then
+      mkdir -p "${lf_dir}/contents/layouts"
+      cp -f "${NEXUS_LAYOUT}" "${lf_dir}/contents/layouts/org.kde.plasma.desktop-layout.js" || true
+    fi
+  done
+fi
+
 if [[ -f "${NEXUS_WALLPAPER}" ]]; then
   echo "[0300-system-branding] Setting NexusOS wallpaper system-wide..."
-  mkdir -p /usr/share/desktop-base/active-theme/wallpaper/contents/images
-  for f in /usr/share/desktop-base/active-theme/wallpaper/contents/images/*; do
-    if [[ -f "$f" ]]; then
-      cp -f "${NEXUS_WALLPAPER}" "$f" || true
+  mkdir -p /usr/share/desktop-base/active-theme/wallpaper/contents/images /usr/share/images/desktop-base
+  for img_dir in /usr/share/desktop-base/*/wallpaper/contents/images /usr/share/desktop-base/active-theme/wallpaper/contents/images /usr/share/wallpapers/Ceratopsian*/contents/images; do
+    if [[ -d "${img_dir}" ]]; then
+      for f in "${img_dir}"/*; do
+        if [[ -f "$f" ]]; then
+          cp -f "${NEXUS_WALLPAPER}" "$f" || true
+        fi
+      done
     fi
   done
   cp -f "${NEXUS_WALLPAPER}" /usr/share/desktop-base/active-theme/wallpaper/contents/images/1920x1080.svg || true

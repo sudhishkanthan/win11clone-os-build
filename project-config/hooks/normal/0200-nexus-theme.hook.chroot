@@ -31,6 +31,28 @@ if [[ -f "${THEME_TMP}/Fluent-kde/install.sh" ]]; then
   )
 fi
 
+# Ensure Plasma 6 KPackage metadata.json exists for Fluent-round* desktopthemes
+for theme_name in Fluent-round Fluent-round-light Fluent-round-dark; do
+  theme_dir="/usr/share/plasma/desktoptheme/${theme_name}"
+  if [[ -d "${theme_dir}" ]] && [[ ! -f "${theme_dir}/metadata.json" ]]; then
+    cat > "${theme_dir}/metadata.json" <<EOF
+{
+    "KPlugin": {
+        "Authors": [
+            {
+                "Name": "vinceliuice"
+            }
+        ],
+        "Category": "Plasma Theme",
+        "Id": "${theme_name}",
+        "License": "GPL-3.0+",
+        "Name": "${theme_name}"
+    }
+}
+EOF
+  fi
+done
+
 # Refresh icon caches including Nexus-OS-Icons
 if command -v gtk-update-icon-cache >/dev/null 2>&1; then
   for icon_dir in /usr/share/icons/Nexus-OS-Icons /usr/share/icons/Tela-circle*; do

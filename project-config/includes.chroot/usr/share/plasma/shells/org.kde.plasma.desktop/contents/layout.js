@@ -17,6 +17,7 @@ for (var j = 0; j < allDesktops.length; j++) {
 var topPill = new Panel();
 topPill.location = "top";
 topPill.alignment = "center";
+topPill.lengthMode = "fit";
 topPill.height = 32;
 topPill.floating = true;
 
@@ -30,7 +31,8 @@ clock.writeConfig("customDateFormat", "HH:mm • ddd, MMM d");
 var dock = new Panel();
 dock.location = "bottom";
 dock.alignment = "center";
-dock.height = 64;
+dock.lengthMode = "fit";
+dock.height = 60;
 dock.floating = true;
 
 // 1st icon on dock: Nexus N Logo (Start Menu / App Launcher)
@@ -62,7 +64,8 @@ dock.addWidget("org.kde.plasma.trash");
 var statusPill = new Panel();
 statusPill.location = "bottom";
 statusPill.alignment = "right";
-statusPill.height = 64;
+statusPill.lengthMode = "fit";
+statusPill.height = 56;
 statusPill.floating = true;
 
 statusPill.addWidget("org.kde.plasma.systemtray");
